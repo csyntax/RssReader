@@ -15,28 +15,34 @@
 			ssl: false,
 			linktarget: "_blank",
 			linkredirect: "",
-			linkcontent: false,
-			historical: false
+			//linkcontent: false,
 		}, options);
 
 		return this.each(function(i, e) {
-			var $e = $(e);
-			var s = '';
+			var s = "";
 
-			if (options.ssl) s = "s";
+			if (options.ssl) {
+				s = "s";
+			}
 
-			if (!$e.hasClass("rssreader")) $e.addClass("rssreader");
+			if (!$(e).hasClass("rssreader")) {
+				$(e).addClass("rssreader");
+			}
 
-			if(url == null) return false;
-
-			if (options.offset > 0) options.offset -= 1;
-			options.limit += options.offset;
+			if(url == null) {
+				return false;
+			}
 
 			var api = "http"+ s +"://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent(url);
 			api += "&num=" + options.limit;
 
-			if (options.historical) api += "&scoring=h";
-			if (options.key != null) api += "&key=" + options.key;
+			/*if (options.historical) {
+				api += "&scoring=h";
+			}*/
+
+			if (options.key != null) {
+				api += "&key=" + options.key;
+			}
 
 			api += "&output=json_xml"
 
@@ -44,11 +50,12 @@
 				if (data.responseStatus == 200) {
 					_process(e, data.responseData, options);
 
-					if ($.isFunction(fn)) fn.call(this,$e);
+					if ($.isFunction(fn)) {
+						fn.call(this,$(e));
+					}
 				} else {
-
 					if (options.showerror)
-						if (options.errormsg != '') {
+						if (options.errormsg != "") {
 							var msg = options.errormsg;
 						} else {
 							var msg = data.responseDetails;
@@ -60,23 +67,20 @@
 	};
 
 	var _process = function(e, data, options) {
-
-		// Get JSON feed data
 		var feeds = data.feed;
 		if (!feeds) {
 			return false;
 		}
 		var rowArray = [];
 		var rowIndex = 0;
-		var html = '';
-		var row = 'odd';
+		var html = "";
+		var row = "odd";
 
-		// Get XML data for media (parseXML not used as requires 1.5+)
 		if (options.media) {
 			var xml = _getXMLDocument(data.xmlString);
 			var xmlEntries = xml.getElementsByTagName('item');
 		}
-
+		// Todo
 		// Add header if required
 		if (options.header)
 			html +=	'<div class="rssHeader">' +
@@ -134,9 +138,9 @@
 					var content = entry.content;
 				}
 
-				if (options.linkcontent) {
+				/*if (options.linkcontent) {
 					content = '<a href="'+ options.linkredirect + feedLink +'" title="View this feed at '+ feeds.title +'">'+ content +'</a>'
-				}
+				}*/
 
 				rowArray[rowIndex]['html'] += '<p>'+ content +'</p>'
 			}
