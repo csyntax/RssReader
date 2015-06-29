@@ -4,17 +4,17 @@
 			limit: 10,
 			offset: 1,
 			header: true,
-			titletag: 'h4',
+			titletag: "h4",
 			date: true,
 			content: true,
 			snippet: true,
 			media: true,
 			showerror: true,
-			errormsg: '',
+			errormsg: "",
 			key: null,
 			ssl: false,
-			linktarget: '_blank',
-			linkredirect: '',
+			linktarget: "_blank",
+			linkredirect: "",
 			linkcontent: false,
 			historical: false
 		}, options);
@@ -23,9 +23,9 @@
 			var $e = $(e);
 			var s = '';
 
-			if (options.ssl) s = 's';
+			if (options.ssl) s = "s";
 
-			if (!$e.hasClass('rssreader')) $e.addClass('rssreader');
+			if (!$e.hasClass("rssreader")) $e.addClass("rssreader");
 
 			if(url == null) return false;
 
