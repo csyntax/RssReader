@@ -12,4 +12,4 @@ content => boolean
 
 showerror => boolean
 
-linktarget => "_blank" or "_self"
+linktarget =>  "_blank" or "_self"
