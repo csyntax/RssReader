@@ -11,7 +11,7 @@
 			//media: true,
 			showerror: true,
 			errormsg: "",
-			key: null,
+			//key: null,
 			//ssl: false,
 			linktarget: "_blank",
 			linkredirect: "",
@@ -35,9 +35,9 @@
 				api += "&scoring=h";
 			}*/
 
-			if (options.key != null) {
+			/*if (options.key != null) {
 				api += "&key=" + options.key;
-			}
+			}*/
 
 			api += "&output=json_xml"
 
@@ -62,26 +62,22 @@
 		});
 	};
 
-function _process(e, data, options) {
+	function _process(e, data, options) {
 		var feeds = data.feed;
-		if (!feeds) {
-			return false;
-		}
 		var rowArray = [];
 		var rowIndex = 0;
 		var html = "";
 		var row = "odd";
 
-		/*if (options.media) {
-			var xml = _getXMLDocument(data.xmlString);
-			var xmlEntries = xml.getElementsByTagName('item');
-		}*/
+		if (!feeds) {
+			return false;
+		}
 
 		if (options.header) {
 			html +=	'<div class="rssHeader">' +
 				'<a href="'+feeds.link+'" title="'+ feeds.description +'">'+ feeds.title +'</a>' +
 				'</div>';
-	 }
+	 	}
 
 		html += '<div class="rssBody">' + '<ul>';
 
@@ -95,7 +91,7 @@ function _process(e, data, options) {
 
 			if (entry.publishedDate) {
 				var entryDate = new Date(entry.publishedDate);
-				var pubDate = entryDate.toLocaleDateString() + ' ' + entryDate.toLocaleTimeString();
+				var pubDate = entryDate.toLocaleDateString() + " " + entryDate.toLocaleTimeString();
 			}
 
 			if (options.linkredirect) {
@@ -103,7 +99,7 @@ function _process(e, data, options) {
 			}
 
 			rowArray[rowIndex]["html"] =
-				'<'+ options.titletag +'><a href="'+ options.linkredirect + feedLink +'" title="View this feed at '+
+				'<'+ options.titletag +'><a href="'+ options.linkredirect + feedLink +'" title=" '+
 				 feeds.title +'">'+ entry.title +'</a></'+ options.titletag +'>'
 
 			if (options.date && pubDate){
@@ -119,41 +115,24 @@ function _process(e, data, options) {
 
 				rowArray[rowIndex]['html'] += '<p>'+ content +'</p>'
 			}
-
-			/*if (options.media && xmlEntries.length > 0) {
-				var xmlMedia = xmlEntries[i].getElementsByTagName("enclosure");
-
-				if (xmlMedia.length > 0) {
-					rowArray[rowIndex]['html'] += '<div class="rssMedia"><div>Media files</div><ul>'
-
-					for (var m=0; m<xmlMedia.length; m++) {
-						var xmlUrl = xmlMedia[m].getAttribute("url");
-						var xmlType = xmlMedia[m].getAttribute("type");
-						var xmlSize = xmlMedia[m].getAttribute("length");
-
-						rowArray[rowIndex]['html'] += '<li><a href="'+ xmlUrl +'" title="Download this media">'+ xmlUrl.split('/').pop() +'</a> ('+ xmlType +', '+ _formatFilesize(xmlSize) +')</li>';
-					}
-					rowArray[rowIndex]['html'] += '</ul></div>'
-				}
-			}*/
 		}
 
 		$.each(rowArray, function(e) {
 			html += '<li class="rssRow '+ row +'">' + rowArray[e]['html'] + '</li>';
 
-			if (row == 'odd') {
-				row = 'even';
+			if (row == "odd") {
+				row = "even";
 			} else {
-				row = 'odd';
+				row = "odd";
 			}
 		});
 
-		html += '</ul>' + '</div>'
+		html += "</ul>" + "</div>";
 
 		$(e).html(html);
 
 		$("a", e).attr("target", options.linktarget);
-}
+	}
 
 function _formatFilesize(bytes) {
 		var s = [
