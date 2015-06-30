@@ -8,11 +8,8 @@
 			date: true,
 			content: true,
 			snippet: true,
-			//media: true,
 			showerror: true,
 			errormsg: "",
-			//key: null,
-			//ssl: false,
 			linktarget: "_blank",
 			linkredirect: "",
 		}, options);
