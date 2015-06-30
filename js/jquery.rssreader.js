@@ -2,16 +2,16 @@
 	$.fn.rssreader = function(url, options, fn) {
 		var options = $.extend({
 			limit: 10,
-			_offset: 1,
+			offset: 1,
 			header: true,
 			titletag: "h4",
 			date: true,
 			content: true,
-			_snippet: true,
+			snippet: true,
 			showerror: true,
 			errormsg: "",
 			linktarget: "_blank",
-			_linkredirect: "",
+			linkredirect: "",
 		}, options);
 
 		return this.each(function(i, e) {
@@ -61,13 +61,15 @@
 		}
 
 		if (options.header) {
-			html +=	'<div class="rssHeader">' + '<a href="' + feeds.link +'" >' + feeds.title + '</a>' + '</div>';
+			html +=	'<div class="rssHeader">' +
+				'<a href="'+feeds.link+'" title="'+ feeds.description +'">'+ feeds.title +'</a>' +
+				'</div>';
 	 	}
 
-		html += '<div class="rssBody">' + "<ul>";
+		html += '<div class="rssBody">' + '<ul>';
 
-		for (var i = options._offset; i < feeds.entries.length; i++) {
-			rowIndex = i - options._offset;
+		for (var i = options.offset; i < feeds.entries.length; i++) {
+			rowIndex = i - options.offset;
 			rowArray[rowIndex] = [];
 
 			var entry = feeds.entries[i];
@@ -79,12 +81,12 @@
 				var pubDate = entryDate.toLocaleDateString() + " " + entryDate.toLocaleTimeString();
 			}
 
-			if (options._linkredirect) {
+			if (options.linkredirect) {
 				feedLink = encodeURIComponent(feedLink);
 			}
 
 			rowArray[rowIndex]["html"] =
-				'<'+ options.titletag +'><a href="'+ options._linkredirect + feedLink +'" title=" '+
+				'<'+ options.titletag +'><a href="'+ options.linkredirect + feedLink +'" title=" '+
 				 feeds.title +'">'+ entry.title +'</a></'+ options.titletag +'>'
 
 			if (options.date && pubDate){
@@ -92,8 +94,8 @@
 			}
 
 			if (options.content) {
-				if (options._snippet && entry.content_snippet != "") {
-					var content = entry.content_snippet;
+				if (options.snippet && entry.contentSnippet != "") {
+					var content = entry.contentSnippet;
 				} else {
 					var content = entry.content;
 				}
