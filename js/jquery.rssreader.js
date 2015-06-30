@@ -28,18 +28,8 @@
 				return false;
 			}
 
-			var api = "http"+ s +"://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=" + encodeURIComponent(url);
-			api += "&num=" + options.limit;
-
-			/*if (options.historical) {
-				api += "&scoring=h";
-			}*/
-
-			/*if (options.key != null) {
-				api += "&key=" + options.key;
-			}*/
-
-			api += "&output=json_xml"
+			var apiUrl = "http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=?&q=";
+			var api = apiUrl + encodeURIComponent(url) + "&num=" + options.limit +"&output=json_xml";
 
 			$.getJSON(api, function(data){
 				if (data.responseStatus == 200) {
@@ -81,7 +71,7 @@
 
 		html += '<div class="rssBody">' + '<ul>';
 
-		for (var i=options.offset; i<feeds.entries.length; i++) {
+		for (var i = options.offset; i < feeds.entries.length; i++) {
 			rowIndex = i - options.offset;
 			rowArray[rowIndex] = [];
 
@@ -113,12 +103,12 @@
 					var content = entry.content;
 				}
 
-				rowArray[rowIndex]['html'] += '<p>'+ content +'</p>'
+				rowArray[rowIndex]["html"] += "<p>" + content + "</p>"
 			}
 		}
 
 		$.each(rowArray, function(e) {
-			html += '<li class="rssRow '+ row +'">' + rowArray[e]['html'] + '</li>';
+			html += '<li class="rssRow '+ row +'">' + rowArray[e]["html"] + '</li>';
 
 			if (row == "odd") {
 				row = "even";
@@ -145,7 +135,7 @@
 		];
 		var e = Math.floor(Math.log(bytes)/Math.log(1024));
 
-		return (bytes/Math.pow(1024, Math.floor(e))).toFixed(2)+" "+s[e];
+		return (bytes/Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
 	}
 
  function _formatDate(date, mask) {
