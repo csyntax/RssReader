@@ -8,22 +8,17 @@
 			date: true,
 			content: true,
 			snippet: true,
-			media: true,
+			//media: true,
 			showerror: true,
 			errormsg: "",
 			key: null,
-			ssl: false,
+			//ssl: false,
 			linktarget: "_blank",
 			linkredirect: "",
-			//linkcontent: false,
 		}, options);
 
 		return this.each(function(i, e) {
 			var s = "";
-
-			if (options.ssl) {
-				s = "s";
-			}
 
 			if (!$(e).hasClass("rssreader")) {
 				$(e).addClass("rssreader");
@@ -77,10 +72,10 @@ function _process(e, data, options) {
 		var html = "";
 		var row = "odd";
 
-		if (options.media) {
+		/*if (options.media) {
 			var xml = _getXMLDocument(data.xmlString);
 			var xmlEntries = xml.getElementsByTagName('item');
-		}
+		}*/
 
 		if (options.header) {
 			html +=	'<div class="rssHeader">' +
@@ -125,7 +120,7 @@ function _process(e, data, options) {
 				rowArray[rowIndex]['html'] += '<p>'+ content +'</p>'
 			}
 
-			if (options.media && xmlEntries.length > 0) {
+			/*if (options.media && xmlEntries.length > 0) {
 				var xmlMedia = xmlEntries[i].getElementsByTagName("enclosure");
 
 				if (xmlMedia.length > 0) {
@@ -140,7 +135,7 @@ function _process(e, data, options) {
 					}
 					rowArray[rowIndex]['html'] += '</ul></div>'
 				}
-			}
+			}*/
 		}
 
 		$.each(rowArray, function(e) {
