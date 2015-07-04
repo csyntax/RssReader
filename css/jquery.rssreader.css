@@ -1,3 +1,7 @@
+body, div, ul, li, h4, p  {
+	margin: 0;
+	padding: 0;
+}
 .rssreader {
 	margin-left: 1em;
 	margin-right: 1em;
@@ -10,8 +14,6 @@
 	border: 0.1em solid #999;
 }
 .rssBody ul {
-	margin: 0;
-	padding: 0;
 	list-style: none;
 }
 .rssRow {
@@ -22,7 +24,18 @@
 }
 .rssRow h4 {
 	font-size: 1.1em;
+	margin-bottom: 0.5em;
 }
+
+.rssRow time {
+	display: block;
+	margin-bottom: 0.5em;
+}
+
+.rssRow p {
+	margin-bottom: 0.5em;
+}
+
 
 .odd {
 	background-color: #e8e8fc;

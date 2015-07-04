@@ -90,7 +90,7 @@
 				 feeds.title +'">'+ entry.title +'</a></'+ options.titletag +'>'
 
 			if (options.date && pubDate){
-				rowArray[rowIndex]["html"] += "<div>"+ pubDate + "</div>"
+				rowArray[rowIndex]["html"] += "<time>"+ pubDate + "</time>"
 			}
 
 			if (options.content) {
