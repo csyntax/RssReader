@@ -61,9 +61,8 @@
 		}
 
 		if (options.header) {
-			html +=	'<div class="rssHeader">' +
-				'<a href="'+feeds.link+'" title="'+ feeds.description +'">'+ feeds.title +'</a>' +
-				'</div>';
+			html +=	'<div class="rssHeader">' + 
+				'<a href="'+feeds.link+'" title="'+ feeds.description +'">'+ feeds.title +'</a>' + '</div>';
 	 	}
 
 		html += '<div class="rssBody">' + '<ul>';
@@ -186,7 +185,7 @@
 
 		if (browser == "Microsoft Internet Explorer") {
 			xml = new ActiveXObject("Microsoft.XMLDOM");
-			xml.async = "false";
+			xml.async = false;
 			xml.loadXML(str);
 		} else {
 			xml = (new DOMParser()).parseFromString(str, "text/xml");
@@ -222,4 +221,5 @@
 
 		return t + " " + u;
 	}
+	
 })(jQuery);
