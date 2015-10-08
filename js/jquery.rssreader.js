@@ -43,7 +43,7 @@
 							var msg = data.responseDetails;
 						};
 
-						$(e).html('<div class="rssError"><p>'+ msg +'</p></div>');
+						$(e).html('<div class="rssError"><p>' + msg + '</p></div>');
 				};
 			});
 		});
@@ -62,7 +62,7 @@
 
 		if (options.header) {
 			html +=	'<div class="rssHeader">' + 
-				'<a href="'+feeds.link+'" title="'+ feeds.description +'">'+ feeds.title +'</a>' + '</div>';
+				'<a href="'+feeds.link+'">'+ feeds.title +'</a>' + '</div>';
 	 	}
 
 		html += '<div class="rssBody">' + '<ul>';
@@ -85,11 +85,11 @@
 			}
 
 			rowArray[rowIndex]["html"] =
-				'<'+ options.titletag +'><a href="'+ options.linkredirect + feedLink +'" title=" '+
-				 feeds.title +'">'+ entry.title +'</a></'+ options.titletag +'>'
+				'<' + options.titletag +'><a href="' + options.linkredirect + feedLink + '" title=" ' +
+				 feeds.title + '">'+ entry.title + '</a></' + options.titletag +'>'
 
 			if (options.date && pubDate){
-				rowArray[rowIndex]["html"] += "<time>"+ pubDate + "</time>"
+				rowArray[rowIndex]["html"] += "<time>" + pubDate + "</time>"
 			}
 
 			if (options.content) {
@@ -104,7 +104,7 @@
 		}
 
 		$.each(rowArray, function(e) {
-			html += '<li class="rssRow '+ row +'">' + rowArray[e]["html"] + '</li>';
+			html += '<li class="rssRow ' + row +'">' + rowArray[e]["html"] + '</li>';
 
 			if (row == "odd") {
 				row = "even";
@@ -129,9 +129,9 @@
 			"TB",
 			"PB"
 		];
-		var e = Math.floor(Math.log(bytes)/Math.log(1024));
+		var e = Math.floor(Math.log(bytes) / Math.log(1024));
 
-		return (bytes/Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
+		return (bytes / Math.pow(1024, Math.floor(e))).toFixed(2) + " " + s[e];
 	}
 
  function _formatDate(date, mask) {
@@ -197,17 +197,17 @@
 	function _getLapsedTime(date) {
 		var todayDate = new Date();
 		var pastDate = new Date(date);
-		var lapsedTime = Math.round((todayDate.getTime() - pastDate.getTime())/1000)
+		var lapsedTime = Math.round((todayDate.getTime() - pastDate.getTime()) / 1000)
 
 		if (lapsedTime < 60) {
 			return "< 1 min";
-		} else if (lapsedTime < (60*60)) {
+		} else if (lapsedTime < (60 * 60)) {
 			var t = Math.round(lapsedTime / 60) - 1;
 			var u = "min";
-		} else if (lapsedTime < (24*60*60)) {
+		} else if (lapsedTime < (24 * 60 * 60)) {
 			var t = Math.round(lapsedTime / 3600) - 1;
 			var u = "hour";
-		} else if (lapsedTime < (7*24*60*60)) {
+		} else if (lapsedTime < (7 * 24 * 60 * 60)) {
 			var t = Math.round(lapsedTime / 86400) - 1;
 			var u = "day";
 		} else {
@@ -221,5 +221,4 @@
 
 		return t + " " + u;
 	}
-	
 })(jQuery);
