@@ -10,9 +10,10 @@ body, div, ul, li, h4, p  {
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
+/*
 .rssBody {
-	border: 0.1em solid #999;
-}
+	border: 0.1em solid whitesmoke;
+}*/
 .rssBody ul {
 	list-style: none;
 }
@@ -22,8 +23,16 @@ body, div, ul, li, h4, p  {
 	padding-right: 0.5em;
 	padding-bottom: 0.5em;
 }
+
+.rssRow:nth-child(odd) {
+	background: #e8e8fc;
+}
+
+.rssRow:nth-child(even) {
+	background: #d4d4e8;
+}
 .rssRow h4 {
-	font-size: 1.1em;
+	font-size: 1.2em;
 	margin-bottom: 0.5em;
 }
 
@@ -34,12 +43,4 @@ body, div, ul, li, h4, p  {
 
 .rssRow p {
 	margin-bottom: 0.5em;
-}
-
-
-.odd {
-	background-color: #e8e8fc;
-}
-.even {
-	background-color: #d4d4e8;
 }

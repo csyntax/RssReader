@@ -54,15 +54,14 @@
 		var rowArray = [];
 		var rowIndex = 0;
 		var html = "";
-		var row = "odd";
+		var row;
 
 		if (!feeds) {
 			return false;
 		}
 
 		if (options.header) {
-			html +=	'<div class="rssHeader">' + 
-				'<a href="'+feeds.link+'">'+ feeds.title +'</a>' + '</div>';
+			html +=	'<div class="rssHeader">' + '<a href="'+feeds.link+'">'+ feeds.title +'</a>' + '</div>';
 	 	}
 
 		html += '<div class="rssBody">' + '<ul>';
@@ -99,18 +98,12 @@
 					var content = entry.content;
 				}
 
-				rowArray[rowIndex]["html"] += "<p>" + content + "</p>"
+				rowArray[rowIndex]["html"] += "<p>" + content + "</p>";
 			}
 		}
 
 		$.each(rowArray, function(e) {
-			html += '<li class="rssRow ' + row +'">' + rowArray[e]["html"] + '</li>';
-
-			if (row == "odd") {
-				row = "even";
-			} else {
-				row = "odd";
-			}
+			html += '<li class="rssRow">' + rowArray[e]["html"] + '</li>';
 		});
 
 		html += "</ul>" + "</div>";
