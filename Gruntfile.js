@@ -6,7 +6,12 @@ module.exports = function(grunt) {
     			files: {
       				"dist/css/rssreader.css": "src/less/rssreader.less"
     			}
-  			}
+  			},
+			production: {
+				files: {
+					"dist/css/rssreader.min.css": "src/less/rssreader.less"
+				}
+			}
 		},
 		watch: {
 			less: {
