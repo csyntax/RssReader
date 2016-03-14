@@ -2,7 +2,7 @@
 jQuery RSS Reader
 
 ## Options
-```
+```js
 limit: number,
 header: boolean,
 titletag: string,
@@ -14,7 +14,7 @@ linktarget:  _blank or _self
 ```
 
 ## Options by default
-```
+```js
 limit: 10,
 header: true,
 titletag: "h4",
