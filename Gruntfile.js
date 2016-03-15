@@ -13,14 +13,29 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		uglify: {
+			options: {
+        		sourceMap: true
+     		},
+			my_target: {
+	 			files: {
+	        		'dist/js/rssreader.min.js': ['src/js/rssreader.js']
+	      		}
+	      	}
+		},
 		watch: {
 			less: {
 				files: ["src/less/*.less"],
 				tasks: ["less"]
+			},
+			js: {
+				files: ["src/js/*.js"],
+				tasks: ["uglify"]
 			}
 		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 };
