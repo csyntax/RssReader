@@ -28,6 +28,6 @@ linktarget: "_blank"
 ## Example
 ```js
 $(document).ready(function () {
-	$("#rssReader").rssreader("https://github.com/csyntax.atom");
+	$("#rssReader").rssreader("RSS_CHANNEL_LINK");
 });
 ```
