@@ -1,26 +1,14 @@
 {
-  "name": "rss-reader",
-  "version": "1.0.0",
-  "description": "jQuery RSS Reader",
-  "main": "index.js",
-  "dependencies": {},
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-contrib-less": "^1.2.0",
-    "grunt-contrib-uglify": "^1.0.0",
-    "grunt-contrib-watch": "^1.0.0"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/csyntax/RssReader.git"
-  },
-  "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/csyntax/RssReader/issues"
-  },
-  "homepage": "https://github.com/csyntax/RssReader#readme"
+    "name": "rss-reader",
+    "version": "1.0.0",
+    "description": "jQuery RSS Reader",
+    "dependencies": {},
+    "devDependencies": {
+        "grunt": "^0.4.5",
+        "grunt-contrib-less": "^1.2.0",
+        "grunt-contrib-uglify": "^1.0.0",
+        "grunt-contrib-watch": "^1.0.0"
+     },
+     "author": "Ivan Ivanov",
+     "license": "MIT"
 }
