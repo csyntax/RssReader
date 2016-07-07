@@ -14,7 +14,12 @@
 
 		<script>
 			$(document).ready(function () {
-				$("#rssReader").rssreader("https://github.com/csyntax.atom");
+				$("#rssReader").rssreader("https://github.com/csyntax.atom", {
+					limit: 20,
+					date: true,
+					content: true,
+					snippet: true
+				});
 			});
 		</script>
 	</head>
